@@ -17,6 +17,7 @@ body {
 
 #root {
   height: 100%;
+  background: transparent;
 }
 
 code {
@@ -63,17 +64,16 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 100%;
   width: 100%;
   color: #ffffff;
-  animation: fadeIn 0.4s ease-out;
+  background: transparent;
+  animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    filter: blur(2px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
   }
 }
 
@@ -89,19 +89,18 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(107, 158, 255, 0.1);
-  backdrop-filter: blur(12px);
-  animation: menuSlide 0.3s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 158, 255, 0.15);
+  animation: menuSlide 0.2s ease-out;
 }
 
 @keyframes menuSlide {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.95);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -161,15 +160,14 @@ input[type="number"]::-webkit-outer-spin-button {
   font-family: 'Roboto', sans-serif;
   border-radius: 8px;
   border: 1px solid rgba(107, 158, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(107, 158, 255, 0.1);
-  backdrop-filter: blur(12px);
-  animation: tooltipFade 0.2s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 158, 255, 0.15);
+  animation: tooltipFade 0.15s ease-out;
 }
 
 @keyframes tooltipFade {
   from {
     opacity: 0;
-    transform: translateY(5px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -270,7 +268,7 @@ button:active {
   background-position: center;
   background-size: 7vh;
   image-rendering: -webkit-optimize-contrast;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(107, 158, 255, 0.4));
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(107, 158, 255, 0.5));
   animation: dragPulse 0.5s ease-in-out infinite alternate;
 }
 
@@ -291,13 +289,13 @@ button:active {
   align-items: center;
   height: 100%;
   gap: 24px;
-  animation: inventorySlide 0.4s ease-out;
+  animation: inventorySlide 0.3s ease-out;
 }
 
 @keyframes inventorySlide {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -329,14 +327,13 @@ button:active {
   border: 2px solid rgba(107, 158, 255, 0.3);
   color: #ffffff;
   background: linear-gradient(135deg, rgba(15, 17, 23, 0.7) 0%, rgba(26, 29, 41, 0.6) 100%);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .inventory-control .inventory-control-input:focus {
   background: linear-gradient(135deg, rgba(15, 17, 23, 0.85) 0%, rgba(26, 29, 41, 0.75) 100%);
   border-color: #6b9eff;
-  box-shadow: 0 0 24px rgba(107, 158, 255, 0.3);
+  box-shadow: 0 0 24px rgba(107, 158, 255, 0.4);
   transform: translateY(-2px);
 }
 
@@ -357,14 +354,14 @@ button:active {
   width: 100%;
   font-weight: 600;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 .inventory-control .inventory-control-button:hover {
   background: linear-gradient(135deg, rgba(107, 158, 255, 0.35) 0%, rgba(107, 158, 255, 0.25) 100%);
   border-color: #6b9eff;
-  box-shadow: 0 0 24px rgba(107, 158, 255, 0.4);
+  box-shadow: 0 0 24px rgba(107, 158, 255, 0.5);
   transform: translateY(-2px);
 }
 
@@ -383,15 +380,14 @@ button:active {
   border-radius: 12px;
   gap: 18px;
   border: 1px solid rgba(107, 158, 255, 0.3);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 60px rgba(107, 158, 255, 0.15);
-  backdrop-filter: blur(16px);
-  animation: dialogSlide 0.3s ease-out;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 60px rgba(107, 158, 255, 0.2);
+  animation: dialogSlide 0.25s ease-out;
 }
 
 @keyframes dialogSlide {
   from {
     opacity: 0;
-    transform: translate(-50%, -48%) scale(0.95);
+    transform: translate(-50%, -48%) scale(0.96);
   }
   to {
     opacity: 1;
@@ -400,9 +396,8 @@ button:active {
 }
 
 .useful-controls-dialog-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  animation: overlayFade 0.3s ease-out;
+  background-color: rgba(0, 0, 0, 0.75);
+  animation: overlayFade 0.25s ease-out;
 }
 
 @keyframes overlayFade {
@@ -425,22 +420,29 @@ button:active {
 }
 
 .useful-controls-dialog-close {
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
   padding: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 4px;
-  fill: #e6edf3;
+  border-radius: 6px;
   transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.useful-controls-dialog-close::before {
+  content: '❌';
+  font-size: 16px;
+}
+
+.useful-controls-dialog-close svg {
+  display: none;
 }
 
 .useful-controls-dialog-close:hover {
   background-color: rgba(255, 107, 136, 0.2);
-  fill: #ff6b88;
-  cursor: pointer;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.1);
 }
 
 .useful-controls-content-wrapper {
@@ -455,36 +457,53 @@ button:active {
   background: linear-gradient(90deg, transparent 0%, rgba(107, 158, 255, 0.3) 50%, transparent 100%);
 }
 
+/* BOUTON SETTINGS - En haut à droite maintenant */
 .useful-controls-button {
   position: absolute !important;
-  bottom: 25px;
-  right: 25px;
+  top: 20px;
+  right: 20px;
   transition: all 0.3s ease !important;
   border: 2px solid rgba(107, 158, 255, 0.4);
   color: #ffffff;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   display: flex;
   justify-content: center;
   align-items: center;
-  fill: #ffffff;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   background: linear-gradient(135deg, rgba(107, 158, 255, 0.25) 0%, rgba(15, 17, 23, 0.85) 100%) !important;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
 
-.useful-controls-button:hover {
-  background: linear-gradient(135deg, rgba(107, 158, 255, 0.35) 0%, rgba(15, 17, 23, 0.95) 100%) !important;
-  border-color: #6b9eff;
-  box-shadow: 0 0 32px rgba(107, 158, 255, 0.5);
-  transform: translateY(-4px) rotate(90deg) !important;
-  cursor: pointer;
+.useful-controls-button svg {
+  display: none;
 }
 
 .useful-controls-button::before {
   content: '⚙️';
-  font-size: 24px;
+  font-size: 26px;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.useful-controls-button:hover {
+  background: linear-gradient(135deg, rgba(107, 158, 255, 0.4) 0%, rgba(15, 17, 23, 0.95) 100%) !important;
+  border-color: #6b9eff;
+  box-shadow: 0 0 32px rgba(107, 158, 255, 0.6);
+  transform: translateY(-3px) scale(1.05) !important;
+}
+
+.useful-controls-button:hover::before {
+  animation: rotate 1s linear infinite;
 }
 
 .useful-controls-exit-button {
@@ -504,8 +523,7 @@ button:active {
   padding: 16px;
   border-radius: 12px;
   border: 1px solid rgba(107, 158, 255, 0.25);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(107, 158, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 158, 255, 0.1);
 }
 
 .inventory-grid-header-wrapper {
@@ -546,7 +564,7 @@ button:active {
   background-size: 7vh;
   color: #e6edf3;
   border: 2px solid rgba(107, 158, 255, 0.25);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   overflow: hidden;
 }
@@ -572,7 +590,7 @@ button:active {
 .item-notification-item-box:hover,
 .hotbar-item-slot:hover {
   border-color: #6b9eff;
-  box-shadow: 0 0 24px rgba(107, 158, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 24px rgba(107, 158, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: translateY(-3px) scale(1.02);
   background: linear-gradient(135deg, rgba(42, 47, 66, 0.5) 0%, rgba(26, 29, 41, 0.7) 100%);
 }
@@ -589,7 +607,6 @@ button:active {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   border-top: 1px solid rgba(107, 158, 255, 0.25);
-  backdrop-filter: blur(4px);
   transition: all 0.3s ease;
 }
 
@@ -619,7 +636,7 @@ button:active {
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(107, 158, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(107, 158, 255, 0.5);
 }
 
 /* === ITEM WRAPPER === */
@@ -653,7 +670,7 @@ button:active {
   align-self: flex-end;
   padding: 4px;
   gap: 4px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
 
@@ -705,14 +722,14 @@ button:active {
   width: 100%;
   position: absolute;
   bottom: 2vh;
-  animation: hotbarSlide 0.4s ease-out;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.4));
+  animation: hotbarSlide 0.3s ease-out;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
 }
 
 @keyframes hotbarSlide {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -744,13 +761,13 @@ button:active {
   width: 100%;
   margin-left: calc(50% - 5.1vh);
   transform: translate(-50%);
-  animation: notificationSlide 0.3s ease-out;
+  animation: notificationSlide 0.25s ease-out;
 }
 
 @keyframes notificationSlide {
   from {
     opacity: 0;
-    transform: translate(-50%, 20px);
+    transform: translate(-50%, 15px);
   }
   to {
     opacity: 1;
@@ -768,7 +785,6 @@ button:active {
   border-top-right-radius: 6px;
   font-family: 'Roboto', sans-serif;
   border-bottom: 1px solid rgba(107, 158, 255, 0.4);
-  backdrop-filter: blur(4px);
 }
 
 .item-notification-action-box p {
@@ -785,11 +801,12 @@ button:active {
 
 /* === BARRES === */
 .durability-bar {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.6) 100%);
   height: 4px;
   overflow: hidden;
   border-radius: 2px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .durability-bar::after {
@@ -805,12 +822,13 @@ button:active {
 }
 
 .weight-bar {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.5) 100%);
   border: 1px solid rgba(107, 158, 255, 0.25);
   height: 0.8vh;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+  position: relative;
 }
 
 .weight-bar::after {
@@ -832,7 +850,7 @@ button:active {
 
 .transition-fade-enter-active {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .transition-fade-exit {
@@ -841,7 +859,7 @@ button:active {
 
 .transition-fade-exit-active {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .transition-slide-up-enter {
@@ -852,7 +870,7 @@ button:active {
 .transition-slide-up-enter-active {
   transform: translateY(0);
   opacity: 1;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .transition-slide-up-exit {
@@ -863,7 +881,7 @@ button:active {
 .transition-slide-up-exit-active {
   transform: translateY(200px);
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 /* === RESPONSIVE === */

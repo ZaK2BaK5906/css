@@ -306,28 +306,36 @@ button:active {
 /* === CONTRÔLES === */
 .inventory-control {
   display: flex;
+  opacity: 1;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .inventory-control .inventory-control-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
   justify-content: center;
   align-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .inventory-control .inventory-control-input {
   transition: all 0.3s ease;
-  padding: 16px 10px;
-  border-radius: 8px;
+  padding: 14px 10px;
+  border-radius: 10px;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   outline: none;
   border: 2px solid rgba(107, 158, 255, 0.3);
   color: #ffffff;
   background: linear-gradient(135deg, rgba(15, 17, 23, 0.7) 0%, rgba(26, 29, 41, 0.6) 100%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  min-width: 140px;
 }
 
 .inventory-control .inventory-control-input:focus {
@@ -341,28 +349,52 @@ button:active {
   color: #6e7a96;
 }
 
+/* BOUTONS AVEC EMOJIS - Repositionnés en colonne à droite */
 .inventory-control .inventory-control-button {
-  font-size: 14px;
+  font-size: 0;
   color: #ffffff;
   background: linear-gradient(135deg, rgba(107, 158, 255, 0.25) 0%, rgba(107, 158, 255, 0.15) 100%);
   transition: all 0.3s ease;
-  padding: 14px 10px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
   border: 2px solid rgba(107, 158, 255, 0.4);
-  text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
   width: 100%;
+  min-width: 140px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Emoji DONNER */
+.inventory-control .inventory-control-button:nth-child(1)::before {
+  content: '🎁 Donner';
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Emoji FERMER */
+.inventory-control .inventory-control-button:nth-child(2)::before {
+  content: '❌ Fermer';
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .inventory-control .inventory-control-button:hover {
-  background: linear-gradient(135deg, rgba(107, 158, 255, 0.35) 0%, rgba(107, 158, 255, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(107, 158, 255, 0.4) 0%, rgba(107, 158, 255, 0.3) 100%);
   border-color: #6b9eff;
-  box-shadow: 0 0 24px rgba(107, 158, 255, 0.5);
-  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(107, 158, 255, 0.6);
+  transform: translateY(-3px) scale(1.03);
+}
+
+.inventory-control .inventory-control-button:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 /* === DIALOGUE === */
@@ -524,6 +556,13 @@ button:active {
   border-radius: 12px;
   border: 1px solid rgba(107, 158, 255, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 158, 255, 0.1);
+}
+
+/* Cacher le wrapper quand vide pour éviter la barre visible */
+.inventory-grid-wrapper:empty {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .inventory-grid-header-wrapper {

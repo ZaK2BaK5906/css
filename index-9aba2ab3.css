@@ -137,6 +137,12 @@ input[type="number"]::-webkit-outer-spin-button {
   cursor: pointer;
   transform: translateX(4px);
   padding-left: 16px;
+  animation: menuItemPulse 1s ease-in-out infinite;
+}
+
+@keyframes menuItemPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(107, 158, 255, 0.4); }
+  50% { box-shadow: 0 0 12px rgba(107, 158, 255, 0.4); }
 }
 
 .context-menu-item:hover::before {
@@ -274,10 +280,10 @@ button:active {
 
 @keyframes dragPulse {
   from {
-    transform: scale(1);
+    transform: scale(1) rotate(-2deg);
   }
   to {
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(2deg);
   }
 }
 
@@ -303,10 +309,12 @@ button:active {
   }
 }
 
-/* === CONTRÔLES === */
+/* === CONTRÔLES - REPOSITIONNÉS EN BAS À GAUCHE === */
 .inventory-control {
   display: flex;
-  opacity: 1;
+  position: absolute !important;
+  bottom: 15vh;
+  left: 20px;
   background: transparent;
   border: none;
   box-shadow: none;
@@ -315,82 +323,97 @@ button:active {
 .inventory-control .inventory-control-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: transparent;
   border: none;
   box-shadow: none;
 }
 
+/* INPUT NOMBRE - Style amélioré */
 .inventory-control .inventory-control-input {
   transition: all 0.3s ease;
-  padding: 14px 10px;
+  padding: 14px 16px;
   border-radius: 10px;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   text-align: center;
   outline: none;
-  border: 2px solid rgba(107, 158, 255, 0.3);
+  border: 2px solid rgba(107, 158, 255, 0.35);
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(15, 17, 23, 0.7) 0%, rgba(26, 29, 41, 0.6) 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  min-width: 140px;
+  background: linear-gradient(135deg, rgba(15, 17, 23, 0.8) 0%, rgba(26, 29, 41, 0.7) 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  min-width: 160px;
+  animation: inputGlow 3s ease-in-out infinite;
+}
+
+@keyframes inputGlow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); }
+  50% { box-shadow: 0 4px 20px rgba(107, 158, 255, 0.3); }
 }
 
 .inventory-control .inventory-control-input:focus {
-  background: linear-gradient(135deg, rgba(15, 17, 23, 0.85) 0%, rgba(26, 29, 41, 0.75) 100%);
+  background: linear-gradient(135deg, rgba(15, 17, 23, 0.9) 0%, rgba(26, 29, 41, 0.85) 100%);
   border-color: #6b9eff;
-  box-shadow: 0 0 24px rgba(107, 158, 255, 0.4);
-  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(107, 158, 255, 0.6);
+  transform: translateY(-2px) scale(1.02);
+  animation: none;
 }
 
 .inventory-control .inventory-control-input::placeholder {
   color: #6e7a96;
 }
 
-/* BOUTONS AVEC EMOJIS - Repositionnés en colonne à droite */
+/* BOUTONS - Style amélioré avec animations */
 .inventory-control .inventory-control-button {
-  font-size: 0;
+  font-size: 14px;
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(107, 158, 255, 0.25) 0%, rgba(107, 158, 255, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(107, 158, 255, 0.28) 0%, rgba(107, 158, 255, 0.18) 100%);
   transition: all 0.3s ease;
-  padding: 16px;
-  border-radius: 12px;
-  border: 2px solid rgba(107, 158, 255, 0.4);
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: 2px solid rgba(107, 158, 255, 0.45);
+  text-transform: uppercase;
   font-family: 'Roboto', sans-serif;
-  width: 100%;
-  min-width: 140px;
+  min-width: 160px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-/* Emoji DONNER */
-.inventory-control .inventory-control-button:nth-child(1)::before {
-  content: '🎁 Donner';
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Emoji FERMER */
-.inventory-control .inventory-control-button:nth-child(2)::before {
-  content: '❌ Fermer';
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.inventory-control .inventory-control-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
 .inventory-control .inventory-control-button:hover {
-  background: linear-gradient(135deg, rgba(107, 158, 255, 0.4) 0%, rgba(107, 158, 255, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(107, 158, 255, 0.45) 0%, rgba(107, 158, 255, 0.35) 100%);
   border-color: #6b9eff;
-  box-shadow: 0 0 28px rgba(107, 158, 255, 0.6);
-  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 32px rgba(107, 158, 255, 0.7);
+  transform: translateY(-3px) scale(1.05);
+  animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 0 32px rgba(107, 158, 255, 0.7); }
+  50% { box-shadow: 0 0 40px rgba(107, 158, 255, 0.9); }
+}
+
+.inventory-control .inventory-control-button:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .inventory-control .inventory-control-button:active {
@@ -475,6 +498,13 @@ button:active {
 .useful-controls-dialog-close:hover {
   background-color: rgba(255, 107, 136, 0.2);
   transform: rotate(90deg) scale(1.1);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(90deg) translateX(0); }
+  25% { transform: rotate(90deg) translateX(-3px); }
+  75% { transform: rotate(90deg) translateX(3px); }
 }
 
 .useful-controls-content-wrapper {
@@ -489,7 +519,7 @@ button:active {
   background: linear-gradient(90deg, transparent 0%, rgba(107, 158, 255, 0.3) 50%, transparent 100%);
 }
 
-/* BOUTON SETTINGS - En haut à droite maintenant */
+/* BOUTON SETTINGS - En haut à droite */
 .useful-controls-button {
   position: absolute !important;
   top: 20px;
@@ -556,13 +586,18 @@ button:active {
   border-radius: 12px;
   border: 1px solid rgba(107, 158, 255, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(107, 158, 255, 0.1);
+  animation: gridFadeIn 0.4s ease-out;
 }
 
-/* Cacher le wrapper quand vide pour éviter la barre visible */
-.inventory-grid-wrapper:empty {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .inventory-grid-header-wrapper {
@@ -579,6 +614,12 @@ button:active {
   color: #6b9eff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 5px rgba(107, 158, 255, 0.5); }
+  50% { text-shadow: 0 0 15px rgba(107, 158, 255, 0.8); }
 }
 
 .inventory-grid-container {
@@ -632,6 +673,12 @@ button:active {
   box-shadow: 0 0 24px rgba(107, 158, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: translateY(-3px) scale(1.02);
   background: linear-gradient(135deg, rgba(42, 47, 66, 0.5) 0%, rgba(26, 29, 41, 0.7) 100%);
+  animation: slotPulse 1s ease-in-out infinite;
+}
+
+@keyframes slotPulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(107, 158, 255, 0.4); }
+  50% { box-shadow: 0 0 32px rgba(107, 158, 255, 0.6); }
 }
 
 .inventory-slot:active {
@@ -756,7 +803,7 @@ button:active {
 .hotbar-container {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   justify-content: center;
   width: 100%;
   position: absolute;
@@ -781,6 +828,45 @@ button:active {
   height: 10.2vh;
 }
 
+/* SLOTS 1-5 DE LA HOTBAR - Style spécial avec glow et bordure */
+.hotbar-item-slot:nth-child(1),
+.hotbar-item-slot:nth-child(2),
+.hotbar-item-slot:nth-child(3),
+.hotbar-item-slot:nth-child(4),
+.hotbar-item-slot:nth-child(5) {
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(26, 29, 41, 0.6) 100%);
+  animation: hotbarGlow 2s ease-in-out infinite;
+  transform: translateY(-4px);
+}
+
+@keyframes hotbarGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 215, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.9);
+  }
+}
+
+.hotbar-item-slot:nth-child(1):hover,
+.hotbar-item-slot:nth-child(2):hover,
+.hotbar-item-slot:nth-child(3):hover,
+.hotbar-item-slot:nth-child(4):hover,
+.hotbar-item-slot:nth-child(5):hover {
+  border-color: rgba(255, 215, 0, 1);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.5);
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* Slots après 5 - Style normal */
+.hotbar-item-slot:nth-child(n+6) {
+  opacity: 0.85;
+}
+
 .hotbar-slot-header-wrapper {
   display: flex;
   flex-direction: row;
@@ -788,7 +874,7 @@ button:active {
   padding: 4px;
 }
 
-/* === NOTIFICATIONS === */
+/* === NOTIFICATIONS - CACHÉE QUAND VIDE === */
 .item-notification-container {
   display: flex;
   overflow-x: scroll;
@@ -801,6 +887,13 @@ button:active {
   margin-left: calc(50% - 5.1vh);
   transform: translate(-50%);
   animation: notificationSlide 0.25s ease-out;
+}
+
+/* CACHER QUAND VIDE */
+.item-notification-container:empty {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 @keyframes notificationSlide {
@@ -824,6 +917,12 @@ button:active {
   border-top-right-radius: 6px;
   font-family: 'Roboto', sans-serif;
   border-bottom: 1px solid rgba(107, 158, 255, 0.4);
+  animation: notifPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes notifPulse {
+  0%, 100% { background: linear-gradient(180deg, rgba(107, 158, 255, 0.35) 0%, rgba(15, 17, 23, 0.85) 100%); }
+  50% { background: linear-gradient(180deg, rgba(107, 158, 255, 0.5) 0%, rgba(15, 17, 23, 0.9) 100%); }
 }
 
 .item-notification-action-box p {
@@ -836,6 +935,13 @@ button:active {
 .item-notification-item-box {
   height: 10.2vh;
   width: 10.2vh;
+  animation: notifBounce 0.5s ease-out;
+}
+
+@keyframes notifBounce {
+  0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+  50% { transform: translateY(-10px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 /* === BARRES === */
